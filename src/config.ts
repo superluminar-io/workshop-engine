@@ -1,3 +1,9 @@
+export interface ResolverContext {
+  sub: string;
+  iss: string;
+  emailAddress: string;
+}
+
 export enum AwsAccount {
   'workshop-engine-prod' = '091964112581'
 }

@@ -9,6 +9,7 @@ const project = new awscdk.AwsCdkTypeScriptApp({
     'cdk-common',
     '@aws-sdk/client-sts',
     'node-fetch@2',
+    '@clerk/clerk-sdk-node',
   ],
   devDeps: [
     '@types/node-fetch@2',

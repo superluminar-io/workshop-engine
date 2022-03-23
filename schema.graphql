@@ -3,7 +3,7 @@ type Query {
 }
 
 type Mutation {
-  createAwsSignInUrl(awsAccountId: String!, emailAddress: String!): String!
+  createAwsSignInUrl(awsAccountId: String!): String!
 }
 
 schema {

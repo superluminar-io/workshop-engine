@@ -1,9 +1,9 @@
 import { STS } from '@aws-sdk/client-sts';
 import fetch from 'node-fetch';
+import { ResolverContext } from '../config';
 
 interface Arguments {
   awsAccountId: string;
-  emailAddress: string;
 }
 
 const region = process.env.AWS_REGION;
@@ -13,12 +13,14 @@ const signinEndpoint = 'https://signin.aws.amazon.com/federation';
 const client = new STS({ region });
 
 export const handler: AWSLambda.AppSyncResolverHandler<Arguments, string> = async (event) => {
+  const identity = event.identity as AWSLambda.AppSyncIdentityLambda;
+  const user = identity.resolverContext as ResolverContext;
   const awsAccountId = event.arguments.awsAccountId;
   const roleName = process.env.WORKSHOP_ATTENDEE_ROLE_NAME || '';
 
   const assumedRole = await client.assumeRole({
     RoleArn: `arn:aws:iam::${awsAccountId}:role/${roleName}`,
-    RoleSessionName: event.arguments.emailAddress,
+    RoleSessionName: user.emailAddress,
   });
 
   if (!assumedRole.Credentials) {
