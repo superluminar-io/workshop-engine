@@ -7,9 +7,12 @@ const project = new awscdk.AwsCdkTypeScriptApp({
     '@aws-cdk/aws-servicecatalog-alpha',
     '@aws-cdk/aws-appsync-alpha',
     'cdk-common',
+    '@aws-sdk/client-sts',
+    'node-fetch@2',
   ],
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
-  // packageName: undefined,  /* The "name" in package.json. */
+  devDeps: [
+    '@types/node-fetch@2',
+    '@types/aws-lambda',
+  ],
 });
 project.synth();

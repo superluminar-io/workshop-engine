@@ -26,8 +26,10 @@
     "projen": "npx projen"
   },
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.93",
     "@types/jest": "^27.4.1",
     "@types/node": "^12",
+    "@types/node-fetch": "2",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "aws-cdk": "^2.1.0",
@@ -48,9 +50,11 @@
   "dependencies": {
     "@aws-cdk/aws-appsync-alpha": "^2.17.0-alpha.0",
     "@aws-cdk/aws-servicecatalog-alpha": "^2.17.0-alpha.0",
+    "@aws-sdk/client-sts": "^3.55.0",
     "aws-cdk-lib": "^2.1.0",
     "cdk-common": "^2.0.99",
-    "constructs": "^10.0.5"
+    "constructs": "^10.0.5",
+    "node-fetch": "2"
   },
   "license": "Apache-2.0",
   "version": "0.0.0",

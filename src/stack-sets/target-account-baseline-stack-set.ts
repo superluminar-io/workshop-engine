@@ -1,5 +1,5 @@
 import { ProductStack } from '@aws-cdk/aws-servicecatalog-alpha';
-import { Duration, CustomResource, aws_iam as iam, aws_lambda as lambda, aws_servicecatalog as servicecatalog } from 'aws-cdk-lib';
+import { Duration, CustomResource, aws_iam as iam, aws_lambda as lambda, aws_servicecatalog as servicecatalog, CfnParameter } from 'aws-cdk-lib';
 import { AWSManagedPolicies } from 'cdk-common';
 import { Construct } from 'constructs';
 import { AwsAccount } from '../config';
@@ -8,9 +8,14 @@ export class TargetAccountBaselineStackSet extends ProductStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
+    const workshopAttendeeRoleNameParameter = new CfnParameter(this, 'workshopAttendeeRoleName');
+
     new iam.Role(this, 'WorkshopAttendee', {
-      roleName: 'WorkshopAttendee',
-      assumedBy: new iam.AccountPrincipal(AwsAccount['workshop-engine-prod']),
+      roleName: workshopAttendeeRoleNameParameter.valueAsString,
+      assumedBy: new iam.CompositePrincipal(
+        new iam.AccountPrincipal(AwsAccount['workshop-engine-prod']),
+        new iam.ServicePrincipal('appsync.amazonaws.com'),
+      ),
       managedPolicies: [
         iam.ManagedPolicy.fromAwsManagedPolicyName(AWSManagedPolicies.ADMINISTRATOR_ACCESS),
       ],

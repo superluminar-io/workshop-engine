@@ -10,3 +10,5 @@ export enum OrganizationalUnit {
 export enum Owner {
   superluminar = 'superluminar'
 }
+
+export const workshopAttendeeRoleName = 'WorkshopAttendee';

@@ -1,0 +1,12 @@
+type Query {
+  hello: String!
+}
+
+type Mutation {
+  createAwsSignInUrl(awsAccountId: String!, emailAddress: String!): String!
+}
+
+schema {
+  mutation: Mutation
+  query: Query
+}

@@ -1,5 +1,7 @@
 import { Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
+import { workshopAttendeeRoleName } from '../config';
+import { GraphQLApi } from '../constructs/graphql-api';
 import { Portfolio } from '../constructs/portfolio';
 import { WorkshopAccountBaseline } from '../constructs/workshop-account-baseline';
 
@@ -17,6 +19,11 @@ export class WorkshopEngineStack extends Stack {
 
     new WorkshopAccountBaseline(this, 'WorkshopAccountBaseline', {
       ou: props.ou,
+      workshopAttendeeRoleName,
+    });
+
+    new GraphQLApi(this, 'GraphQLApi', {
+      workshopAttendeeRoleName,
     });
   }
 }
