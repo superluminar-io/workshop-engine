@@ -9,7 +9,7 @@ new WorkshopEngineStack(app, 'workshop-engine-prod', {
     account: AwsAccount['workshop-engine-prod'],
     region: 'eu-west-1',
   },
-  ou: OrganizationalUnit.Workshops,
+  ou: OrganizationalUnit['Workshop Accounts'],
 });
 
 app.synth();

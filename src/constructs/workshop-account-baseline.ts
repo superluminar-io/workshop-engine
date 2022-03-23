@@ -18,7 +18,7 @@ export class WorkshopAccountBaseline extends Construct {
         enabled: true,
         retainStacksOnAccountRemoval: false,
       },
-      capabilities: ['CAPABILITY_IAM'],
+      capabilities: ['CAPABILITY_IAM', 'CAPABILITY_NAMED_IAM'],
       permissionModel: 'SERVICE_MANAGED',
       stackSetName: 'WorkshopAccountBaseline',
       callAs: 'DELEGATED_ADMIN',

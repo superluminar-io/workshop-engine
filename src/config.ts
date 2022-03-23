@@ -3,7 +3,8 @@ export enum AwsAccount {
 }
 
 export enum OrganizationalUnit {
-  Workshops = 'ou-13ix-xh9z7807'
+  Workshops = 'ou-13ix-xh9z7807',
+  'Workshop Accounts' = 'ou-13ix-6tkkmwja'
 }
 
 export enum Owner {
