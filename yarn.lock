@@ -16,6 +16,11 @@
   dependencies:
     "@aws-cdk/cloudformation-diff" "2.17.0"
 
+"@aws-cdk/aws-appsync-alpha@^2.17.0-alpha.0":
+  version "2.17.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-appsync-alpha/-/aws-appsync-alpha-2.17.0-alpha.0.tgz#e9ff91d1711949326be2f44f135cb87b2f59cd0e"
+  integrity sha512-e6c6vQkavl0EQvh24oulzzeF/WvMTkN6bzefb22ujJrzGp5l1NR3UIS7JD6MHjxL/FLr77yTINAudGtHmq1XpQ==
+
 "@aws-cdk/aws-servicecatalog-alpha@^2.17.0-alpha.0":
   version "2.17.0-alpha.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-servicecatalog-alpha/-/aws-servicecatalog-alpha-2.17.0-alpha.0.tgz#a0617d62ddc66d60bfdc8f1a099b1b16ff7df3ec"
