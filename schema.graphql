@@ -1,9 +1,50 @@
+enum UserRole {
+  ATTENDEE
+  ADMIN
+}
+
+type User {
+  emailAddress: ID!
+  role: UserRole!
+}
+
+type AttendeeList {
+  attendees: [String!]!
+  nextToken: String
+}
+
+type Workshop {
+  id: ID!
+  awsAccountId: String
+  title: String!
+  createdAt: AWSDateTime!
+  attendees: AttendeeList!
+}
+
+input CreateOrUpdateWorkshopInput {
+  awsAccountId: String
+  title: String!
+  attendees: [String!]!
+}
+
+type WorkshopList {
+  workshops: [Workshop!]!
+  nextToken: String
+}
+
 type Query {
-  hello: String!
+  me: User!
+  workshops(nextToken: String): WorkshopList!
 }
 
 type Mutation {
   createAwsSignInUrl(awsAccountId: String!): String!
+  createWorkshop(input: CreateOrUpdateWorkshopInput!): Workshop!
+  updateWorkshop(
+    workshopId: ID!
+    input: CreateOrUpdateWorkshopInput!
+  ): Workshop!
+  promoteUser(emailAddress: ID!, role: UserRole!): User!
 }
 
 schema {

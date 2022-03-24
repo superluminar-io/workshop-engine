@@ -1,7 +1,8 @@
 import { join } from 'path';
 import * as appsync from '@aws-cdk/aws-appsync-alpha';
-import { Aws, aws_iam as iam, aws_lambda_nodejs as lambdaNodejs, aws_secretsmanager as sm } from 'aws-cdk-lib';
+import { Aws, aws_iam as iam, aws_lambda_nodejs as lambdaNodejs, aws_secretsmanager as sm, aws_dynamodb as dynamodb } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
+import * as mappingTemplates from '../mapping-templates';
 
 export interface GraphQLApiProps {
   workshopAttendeeRoleName: string;
@@ -13,6 +14,29 @@ export class GraphQLApi extends Construct {
 
     const clerkApiKey = sm.Secret.fromSecretAttributes(this, 'ClerkApiKey', {
       secretPartialArn: `arn:aws:secretsmanager:${Aws.REGION}:${Aws.ACCOUNT_ID}:secret:clerk/backend-api-key`,
+    });
+
+    const workshopsTable = new dynamodb.Table(this, 'WorkshopsTable', {
+      partitionKey: {
+        name: 'workshopId',
+        type: dynamodb.AttributeType.STRING,
+      },
+      sortKey: {
+        name: 'node',
+        type: dynamodb.AttributeType.STRING,
+      },
+      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
+    });
+    workshopsTable.addGlobalSecondaryIndex({
+      indexName: 'byNode',
+      partitionKey: {
+        name: 'node',
+        type: dynamodb.AttributeType.STRING,
+      },
+      sortKey: {
+        name: 'createdAt',
+        type: dynamodb.AttributeType.STRING,
+      },
     });
 
     const authorizerFunction = new lambdaNodejs.NodejsFunction(this, 'AuthorizerFunction', {
@@ -46,6 +70,56 @@ export class GraphQLApi extends Construct {
         fieldLogLevel: appsync.FieldLogLevel.ERROR,
         role: cloudWatchLogsRole,
       },
+    });
+
+    const workshopTableDataSource = api.addDynamoDbDataSource('WorkshopTableDataSource', workshopsTable);
+    const userDataSource = api.addNoneDataSource('UserDataSource');
+
+    userDataSource.createResolver({
+      typeName: 'Query',
+      fieldName: 'me',
+      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.queryMe.request),
+      responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.queryMe.response),
+    });
+
+    const isAdminFunction = new appsync.AppsyncFunction(this, 'IsAdminFunction', {
+      name: 'isAdminFunction',
+      api,
+      dataSource: userDataSource,
+      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionIsAdmin.request),
+      responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionIsAdmin.response),
+    });
+
+    const storeWorkshopFunction = new appsync.AppsyncFunction(this, 'StoreWorkshopFunction', {
+      name: 'storeWorkshopFunction',
+      api,
+      dataSource: workshopTableDataSource,
+      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionStoreWorkshop.request(workshopsTable.tableName)),
+      responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionStoreWorkshop.response),
+    });
+
+    const createClerkUsersDataSource = api.addLambdaDataSource(
+      'CreateClerkUsersDataSource',
+      new lambdaNodejs.NodejsFunction(this, 'CreateClerkUsersFunction', {
+        entry: join(__dirname, '../functions/create-clerk-users.ts'),
+        environment: {
+          CLERK_API_KEY: clerkApiKey.secretValue.toString(),
+        },
+      }),
+    );
+    const createClerkUsersFunction = createClerkUsersDataSource.createFunction({
+      name: 'createClerkUsersFunction',
+      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionCreateClerkUsers.request),
+      responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionCreateClerkUsers.response),
+    });
+
+    new appsync.Resolver(this, 'CreateWorkshopPipelineResolver', {
+      api,
+      typeName: 'Mutation',
+      fieldName: 'createWorkshop',
+      pipelineConfig: [isAdminFunction, storeWorkshopFunction, createClerkUsersFunction],
+      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.mutationCreateWorkshop.request),
+      responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.mutationCreateWorkshop.response),
     });
 
     const awsSignInUrlFunction = new lambdaNodejs.NodejsFunction(this, 'AwsSignInUrlFunction', {

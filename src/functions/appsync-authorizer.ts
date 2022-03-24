@@ -1,5 +1,5 @@
 import clerk from '@clerk/clerk-sdk-node';
-import { ResolverContext } from '../config';
+import { ResolverContext, UserRole } from '../config';
 
 export const handler: AWSLambda.AppSyncAuthorizerHandler<ResolverContext> = async (event) => {
   console.log(`Event: ${JSON.stringify(event)}`);
@@ -16,6 +16,7 @@ export const handler: AWSLambda.AppSyncAuthorizerHandler<ResolverContext> = asyn
         sub: jwt.sub,
         iss: jwt.iss,
         emailAddress,
+        role: user.privateMetadata.role || UserRole.ATTENDEE,
       },
     };
   } catch (error) {

@@ -17,4 +17,9 @@ export enum Owner {
   superluminar = 'superluminar'
 }
 
+export enum UserRole {
+  ADMIN = 'ADMIN',
+  ATTENDEE = 'ATTENDEE'
+}
+
 export const workshopAttendeeRoleName = 'WorkshopAttendee';
