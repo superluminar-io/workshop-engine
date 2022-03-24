@@ -8,17 +8,12 @@ type User {
   role: UserRole!
 }
 
-type AttendeeList {
-  attendees: [String!]!
-  nextToken: String
-}
-
 type Workshop {
   id: ID!
   awsAccountId: String
   title: String!
   createdAt: AWSDateTime!
-  attendees: AttendeeList!
+  attendees: [String!]!
 }
 
 input CreateOrUpdateWorkshopInput {

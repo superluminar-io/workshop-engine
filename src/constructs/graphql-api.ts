@@ -122,6 +122,13 @@ export class GraphQLApi extends Construct {
       responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.mutationCreateWorkshop.response),
     });
 
+    workshopTableDataSource.createResolver({
+      typeName: 'Workshop',
+      fieldName: 'attendees',
+      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.workshopAttendees.request),
+      responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.workshopAttendees.response),
+    });
+
     const awsSignInUrlFunction = new lambdaNodejs.NodejsFunction(this, 'AwsSignInUrlFunction', {
       entry: join(__dirname, '../functions/aws-sign-in-url.ts'),
       environment: {
