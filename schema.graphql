@@ -23,13 +23,13 @@ input CreateOrUpdateWorkshopInput {
 }
 
 type WorkshopList {
-  workshops: [Workshop!]!
+  items: [Workshop!]!
   nextToken: String
 }
 
 type Query {
   me: User!
-  workshops(nextToken: String): WorkshopList!
+  workshops(nextToken: String, limit: Int): WorkshopList!
 }
 
 type Mutation {

@@ -18,11 +18,7 @@ export class GraphQLApi extends Construct {
 
     const workshopsTable = new dynamodb.Table(this, 'WorkshopsTable', {
       partitionKey: {
-        name: 'workshopId',
-        type: dynamodb.AttributeType.STRING,
-      },
-      sortKey: {
-        name: 'node',
+        name: 'id',
         type: dynamodb.AttributeType.STRING,
       },
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
@@ -94,7 +90,7 @@ export class GraphQLApi extends Construct {
       name: 'storeWorkshopFunction',
       api,
       dataSource: workshopTableDataSource,
-      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionStoreWorkshop.request(workshopsTable.tableName)),
+      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionStoreWorkshop.request),
       responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionStoreWorkshop.response),
     });
 
@@ -123,10 +119,10 @@ export class GraphQLApi extends Construct {
     });
 
     workshopTableDataSource.createResolver({
-      typeName: 'Workshop',
-      fieldName: 'attendees',
-      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.workshopAttendees.request),
-      responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.workshopAttendees.response),
+      typeName: 'Query',
+      fieldName: 'workshops',
+      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.queryWorkshops.request),
+      responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.queryWorkshops.response),
     });
 
     const awsSignInUrlFunction = new lambdaNodejs.NodejsFunction(this, 'AwsSignInUrlFunction', {
