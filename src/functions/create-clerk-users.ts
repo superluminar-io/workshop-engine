@@ -19,5 +19,5 @@ export const handler = async (event: Event) => {
         },
       });
     },
-  ));
+  )).catch(console.log);
 };
