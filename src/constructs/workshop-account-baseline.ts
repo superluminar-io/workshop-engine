@@ -6,6 +6,7 @@ import { TargetAccountBaselineStackSet } from '../stack-sets/target-account-base
 export interface WorkshopAccountBaselineProps {
   ou: string;
   workshopAttendeeRoleName: string;
+  stackSetName: string;
 }
 
 export class WorkshopAccountBaseline extends Construct {
@@ -21,7 +22,7 @@ export class WorkshopAccountBaseline extends Construct {
       },
       capabilities: ['CAPABILITY_IAM', 'CAPABILITY_NAMED_IAM'],
       permissionModel: 'SERVICE_MANAGED',
-      stackSetName: 'WorkshopAccountBaseline',
+      stackSetName: props.stackSetName,
       callAs: 'DELEGATED_ADMIN',
       parameters: [
         {

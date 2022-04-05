@@ -5,6 +5,7 @@ import { PortfolioShare } from '../constructs/portfolio-share';
 import { HelloWorldProduct } from '../products/hello-world-product';
 
 export interface PortfolioProps {
+  portfolioName: string;
   ou: string;
 }
 
@@ -13,7 +14,7 @@ export class Portfolio extends Construct {
     super(scope, id);
 
     const portfolio = new servicecatalog.Portfolio(this, 'Portfolio', {
-      displayName: 'WorkshopPortfolio',
+      displayName: props.portfolioName,
       providerName: Owner.superluminar,
     });
 

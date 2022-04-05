@@ -7,6 +7,8 @@ import { WorkshopAccountBaseline } from '../constructs/workshop-account-baseline
 
 export interface WorkshopEngineStackProps extends StackProps {
   ou: string;
+  portfolioName: string;
+  workshopBaselineStackSetName: string;
 }
 
 export class WorkshopEngineStack extends Stack {
@@ -15,11 +17,13 @@ export class WorkshopEngineStack extends Stack {
 
     new Portfolio(this, 'WorkshopPortfolio', {
       ou: props.ou,
+      portfolioName: props.portfolioName,
     });
 
     new WorkshopAccountBaseline(this, 'WorkshopAccountBaseline', {
       ou: props.ou,
       workshopAttendeeRoleName,
+      stackSetName: props.workshopBaselineStackSetName,
     });
 
     new GraphQLApi(this, 'GraphQLApi', {

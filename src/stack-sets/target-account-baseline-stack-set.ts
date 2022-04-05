@@ -14,6 +14,7 @@ export class TargetAccountBaselineStackSet extends ProductStack {
       roleName: workshopAttendeeRoleNameParameter.valueAsString,
       assumedBy: new iam.CompositePrincipal(
         new iam.AccountPrincipal(AwsAccount['workshop-engine-prod']),
+        new iam.AccountPrincipal(AwsAccount['workshop-engine-staging']),
         new iam.ServicePrincipal('appsync.amazonaws.com'),
       ),
       managedPolicies: [

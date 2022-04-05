@@ -5,12 +5,14 @@ export interface ResolverContext {
 }
 
 export enum AwsAccount {
+  'workshop-engine-staging' = '203864079770',
   'workshop-engine-prod' = '091964112581'
 }
 
 export enum OrganizationalUnit {
   Workshops = 'ou-13ix-xh9z7807',
-  'Workshop Accounts' = 'ou-13ix-6tkkmwja'
+  'Workshop Accounts Staging' = 'ou-13ix-nx9crx8v',
+  'Workshop Accounts Prod' = 'ou-13ix-dikqjh01'
 }
 
 export enum Owner {
