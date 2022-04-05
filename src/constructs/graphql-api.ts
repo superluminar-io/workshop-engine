@@ -60,6 +60,11 @@ export class GraphQLApi extends Construct {
             handler: authorizerFunction,
           },
         },
+        additionalAuthorizationModes: [
+          {
+            authorizationType: appsync.AuthorizationType.API_KEY,
+          },
+        ],
       },
       xrayEnabled: true,
       logConfig: {
