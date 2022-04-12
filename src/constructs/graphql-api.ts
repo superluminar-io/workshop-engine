@@ -12,6 +12,13 @@ export class GraphQLApi extends Construct {
   constructor(scope: Construct, id: string, props: GraphQLApiProps) {
     super(scope, id);
 
+    const awsSignInUrlUser = new iam.User(this, 'AwsSignInUrlUser');
+    awsSignInUrlUser.addToPolicy(new iam.PolicyStatement({
+      actions: ['sts:AssumeRole'],
+      resources: [`arn:aws:iam::*:role/${props.workshopAttendeeRoleName}`],
+    }));
+    const awsSignInUrlUserAccessKey = new iam.AccessKey(this, 'AwsSignInUrlUserAccessKey', { user: awsSignInUrlUser });
+
     const clerkApiKey = sm.Secret.fromSecretAttributes(this, 'ClerkApiKey', {
       secretPartialArn: `arn:aws:secretsmanager:${Aws.REGION}:${Aws.ACCOUNT_ID}:secret:clerk/backend-api-key`,
     });
@@ -134,12 +141,10 @@ export class GraphQLApi extends Construct {
       entry: join(__dirname, '../functions/aws-sign-in-url.ts'),
       environment: {
         WORKSHOP_ATTENDEE_ROLE_NAME: props.workshopAttendeeRoleName,
+        SIGN_IN_USER_ACCESS_KEY_ID: awsSignInUrlUserAccessKey.accessKeyId,
+        SIGN_IN_USER_SECRET_ACCESS_KEY: awsSignInUrlUserAccessKey.secretAccessKey.toString(),
       },
     });
-    awsSignInUrlFunction.addToRolePolicy(new iam.PolicyStatement({
-      actions: ['sts:AssumeRole'],
-      resources: [`arn:aws:iam::*:role/${props.workshopAttendeeRoleName}`],
-    }));
 
     const awsSignInUrlDataSource = api.addLambdaDataSource('AwsSignInUrlDataSource', awsSignInUrlFunction);
     awsSignInUrlDataSource.createResolver({

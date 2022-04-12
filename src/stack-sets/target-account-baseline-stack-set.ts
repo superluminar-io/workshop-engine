@@ -15,11 +15,11 @@ export class TargetAccountBaselineStackSet extends ProductStack {
       assumedBy: new iam.CompositePrincipal(
         new iam.AccountPrincipal(AwsAccount['workshop-engine-prod']),
         new iam.AccountPrincipal(AwsAccount['workshop-engine-staging']),
-        new iam.ServicePrincipal('appsync.amazonaws.com'),
       ),
       managedPolicies: [
         iam.ManagedPolicy.fromAwsManagedPolicyName(AWSManagedPolicies.ADMINISTRATOR_ACCESS),
       ],
+      maxSessionDuration: Duration.hours(8),
     });
 
     const portfolioPrincipalAssociationLookupsFunction = new lambda.Function(this, 'PortfolioPrincipalAssociationLookupsFunction', {

@@ -11,7 +11,13 @@ const consoleUrl = `https://${region}.console.aws.amazon.com`;
 const signinEndpoint = 'https://signin.aws.amazon.com/federation';
 const durationSeconds = 60 * 60 * 8;
 
-const client = new STS({ region });
+const client = new STS({
+  region,
+  credentials: {
+    accessKeyId: process.env.SIGN_IN_USER_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.SIGN_IN_USER_SECRET_ACCESS_KEY!,
+  },
+});
 
 export const handler: AWSLambda.AppSyncResolverHandler<Arguments, string> = async (event) => {
   const identity = event.identity as AWSLambda.AppSyncIdentityLambda;
