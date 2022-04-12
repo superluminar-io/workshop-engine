@@ -9,6 +9,7 @@ interface Arguments {
 const region = process.env.AWS_REGION;
 const consoleUrl = `https://${region}.console.aws.amazon.com`;
 const signinEndpoint = 'https://signin.aws.amazon.com/federation';
+const durationSeconds = 60 * 60 * 8;
 
 const client = new STS({ region });
 
@@ -21,6 +22,7 @@ export const handler: AWSLambda.AppSyncResolverHandler<Arguments, string> = asyn
   const assumedRole = await client.assumeRole({
     RoleArn: `arn:aws:iam::${awsAccountId}:role/${roleName}`,
     RoleSessionName: user.emailAddress,
+    DurationSeconds: durationSeconds,
   });
 
   if (!assumedRole.Credentials) {
