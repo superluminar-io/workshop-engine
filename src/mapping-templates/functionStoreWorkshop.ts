@@ -9,7 +9,7 @@ export const request = `
       "node": "workshop",
       "createdAt": "$util.time.nowISO8601()",
       "title": "$ctx.args.input.title",
-      "awsAccountId": "$ctx.args.input.awsAccountId",
+      "awsAccountId": "$util.defaultIfNullOrEmpty($ctx.args.input.awsAccountId, '')",
       "attendees": $ctx.args.input.attendees
     })
   }

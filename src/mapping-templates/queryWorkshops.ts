@@ -13,7 +13,8 @@ export const request = `
       },
       "index": "byNode",
       "limit": $util.defaultIfNull($ctx.args.limit, 20),
-      "nextToken": $util.toJson($util.defaultIfNullOrBlank($ctx.args.nextToken, null))
+      "nextToken": $util.toJson($util.defaultIfNullOrBlank($ctx.args.nextToken, null)),
+      "scanIndexForward" : false
     }
   #else
     {
@@ -40,7 +41,8 @@ export const request = `
       },
       "index": "byNode",
       "limit": $util.defaultIfNull($ctx.args.limit, 20),
-      "nextToken": $util.toJson($util.defaultIfNullOrBlank($ctx.args.nextToken, null))
+      "nextToken": $util.toJson($util.defaultIfNullOrBlank($ctx.args.nextToken, null)),
+      "scanIndexForward" : false
     }
   #end
 `;
