@@ -106,6 +106,14 @@ export class GraphQLApi extends Construct {
       responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionStoreWorkshop.response),
     });
 
+    const updateWorkshopFunction = new appsync.AppsyncFunction(this, 'UpdateWorkshopFunction', {
+      name: 'updateWorkshopFunction',
+      api,
+      dataSource: workshopTableDataSource,
+      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionUpdateWorkshop.request),
+      responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionUpdateWorkshop.response),
+    });
+
     const createClerkUsersDataSource = api.addLambdaDataSource(
       'CreateClerkUsersDataSource',
       new lambdaNodejs.NodejsFunction(this, 'CreateClerkUsersFunction', {
@@ -128,6 +136,15 @@ export class GraphQLApi extends Construct {
       pipelineConfig: [isAdminFunction, storeWorkshopFunction, createClerkUsersFunction],
       requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.mutationCreateWorkshop.request),
       responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.mutationCreateWorkshop.response),
+    });
+
+    new appsync.Resolver(this, 'UpdateWorkshopPipelineResolver', {
+      api,
+      typeName: 'Mutation',
+      fieldName: 'updateWorkshop',
+      pipelineConfig: [isAdminFunction, updateWorkshopFunction, createClerkUsersFunction],
+      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.mutationUpdateWorkshop.request),
+      responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.mutationUpdateWorkshop.response),
     });
 
     workshopTableDataSource.createResolver({
