@@ -1,4 +1,6 @@
-on: status
+name: report to slack
+on: 
+ - status
 
 jobs:
   if_error_or_failure:
