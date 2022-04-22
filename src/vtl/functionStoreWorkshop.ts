@@ -2,15 +2,15 @@ export const request = `
   {
     "version" : "2017-02-28",
     "operation" : "PutItem",
-    "key" : {
-      "id": $util.dynamodb.toDynamoDBJson($util.autoId()),
+    "key": {
+      "id": $util.dynamodb.toDynamoDBJson($util.autoId())
     },
     "attributeValues" : $util.dynamodb.toMapValuesJson({
       "node": "workshop",
       "createdAt": "$util.time.nowISO8601()",
-      "title": "$ctx.args.input.title",
-      "awsAccountId": "$util.defaultIfNullOrEmpty($ctx.args.input.awsAccountId, '')",
-      "attendees": $ctx.args.input.attendees
+      "title": "$ctx.arguments.input.title",
+      "awsAccountId": "$util.defaultIfNullOrEmpty($ctx.arguments.input.awsAccountId, '')",
+      "attendees": $ctx.arguments.input.attendees
     })
   }
 `;

@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`request mapping input w/ aws account id should match snapshot 1`] = `
+Object {
+  "key": Object {
+    "id": Object {
+      "S": "beb79a10-437e-48df-96e2-9cd87fdc063f",
+    },
+  },
+  "operation": "UpdateItem",
+  "update": Object {
+    "expression": "SET title = :title, awsAccountId = :awsAccountId, attendees = :attendees",
+    "expressionValues": Object {
+      ":attendees": Object {
+        "L": Array [
+          Object {
+            "S": "me@xample.com",
+          },
+          Object {
+            "S": "you@xample.com",
+          },
+        ],
+      },
+      ":awsAccountId": Object {
+        "S": "298097285261",
+      },
+      ":title": Object {
+        "S": "Serverless Beginner Workshop",
+      },
+    },
+  },
+  "version": "2017-02-28",
+}
+`;
+
+exports[`request mapping input w/o aws account id should match snapshot 1`] = `
+Object {
+  "key": Object {
+    "id": Object {
+      "S": "beb79a10-437e-48df-96e2-9cd87fdc063f",
+    },
+  },
+  "operation": "UpdateItem",
+  "update": Object {
+    "expression": "SET title = :title, awsAccountId = :awsAccountId, attendees = :attendees",
+    "expressionValues": Object {
+      ":attendees": Object {
+        "L": Array [
+          Object {
+            "S": "me@xample.com",
+          },
+          Object {
+            "S": "you@xample.com",
+          },
+        ],
+      },
+      ":awsAccountId": Object {
+        "S": "",
+      },
+      ":title": Object {
+        "S": "Serverless Beginner Workshop",
+      },
+    },
+  },
+  "version": "2017-02-28",
+}
+`;
+
+exports[`response mapping should match snapshot 1`] = `
+Object {
+  "any": "data",
+}
+`;

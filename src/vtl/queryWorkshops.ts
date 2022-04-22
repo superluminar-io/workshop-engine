@@ -9,12 +9,12 @@ export const request = `
           ":node": {
             "S" : "workshop"
           }
-        },
+        }
       },
       "index": "byNode",
-      "limit": $util.defaultIfNull($ctx.args.limit, 20),
-      "nextToken": $util.toJson($util.defaultIfNullOrBlank($ctx.args.nextToken, null)),
-      "scanIndexForward" : false
+      "limit": $util.defaultIfNull($ctx.arguments.limit, 20),
+      "nextToken": $util.toJson($util.defaultIfNullOrBlank($ctx.arguments.nextToken, null)),
+      "scanIndexForward": false
     }
   #else
     {
@@ -26,12 +26,12 @@ export const request = `
           ":node": {
             "S" : "workshop"
           }
-        },
+        }
       },
       "filter": {
         "expression": "contains(#attendees, :attendee)",
         "expressionNames": {
-          "#attendees": "attendees",
+          "#attendees": "attendees"
         },
         "expressionValues": {
           ":attendee": {
@@ -40,9 +40,9 @@ export const request = `
         }
       },
       "index": "byNode",
-      "limit": $util.defaultIfNull($ctx.args.limit, 20),
-      "nextToken": $util.toJson($util.defaultIfNullOrBlank($ctx.args.nextToken, null)),
-      "scanIndexForward" : false
+      "limit": $util.defaultIfNull($ctx.arguments.limit, 20),
+      "nextToken": $util.toJson($util.defaultIfNullOrBlank($ctx.arguments.nextToken, null)),
+      "scanIndexForward": false
     }
   #end
 `;

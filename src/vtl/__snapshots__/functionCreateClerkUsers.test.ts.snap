@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`request mapping should match snapshot 1`] = `
+Object {
+  "operation": "Invoke",
+  "payload": Object {
+    "userEmailAddresses": Array [
+      "me@example.com",
+    ],
+  },
+  "version": "2018-05-29",
+}
+`;
+
+exports[`response mapping should match snapshot 1`] = `
+Object {
+  "any": "data",
+}
+`;

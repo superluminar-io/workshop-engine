@@ -20,6 +20,7 @@ const project = new awscdk.AwsCdkTypeScriptApp({
     '@aws-sdk/client-sts',
     'node-fetch@2',
     '@clerk/clerk-sdk-node',
+    'appsync-template-tester',
   ],
   devDeps: [
     '@types/node-fetch@2',
