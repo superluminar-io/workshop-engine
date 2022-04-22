@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`request mapping user has admin role should match snapshot 1`] = `
+Object {
+  "index": "byNode",
+  "limit": 20,
+  "nextToken": null,
+  "operation": "Query",
+  "query": Object {
+    "expression": "node = :node",
+    "expressionValues": Object {
+      ":node": Object {
+        "S": "workshop",
+      },
+    },
+  },
+  "scanIndexForward": false,
+  "version": "2017-02-28",
+}
+`;
+
+exports[`request mapping user has not admin role should match snapshot 1`] = `
+Object {
+  "filter": Object {
+    "expression": "contains(#attendees, :attendee)",
+    "expressionNames": Object {
+      "#attendees": "attendees",
+    },
+    "expressionValues": Object {
+      ":attendee": Object {
+        "S": "me@example.com",
+      },
+    },
+  },
+  "index": "byNode",
+  "limit": 20,
+  "nextToken": null,
+  "operation": "Query",
+  "query": Object {
+    "expression": "node = :node",
+    "expressionValues": Object {
+      ":node": Object {
+        "S": "workshop",
+      },
+    },
+  },
+  "scanIndexForward": false,
+  "version": "2017-02-28",
+}
+`;
+
+exports[`response mapping result w/ next token should match snapshot 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "any": "data",
+    },
+    Object {
+      "any": "data",
+    },
+  ],
+  "nextToken": "abc",
+}
+`;
+
+exports[`response mapping result w/o next token should match snapshot 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "any": "data",
+    },
+    Object {
+      "any": "data",
+    },
+  ],
+  "nextToken": null,
+}
+`;
