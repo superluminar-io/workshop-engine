@@ -6,6 +6,11 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   autoApproveOptions: {
     allowedUsernames: ['superluminar-bot'],
   },
+  depsUpgradeOptions: {
+    workflowOptions: {
+      labels: ['auto-approve'],
+    },
+  },
   deps: [
     '@aws-cdk/aws-servicecatalog-alpha',
     '@aws-cdk/aws-appsync-alpha',
