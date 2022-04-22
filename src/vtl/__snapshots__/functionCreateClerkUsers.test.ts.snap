@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`request mapping 1`] = `
+exports[`request mapping should match snapshot 1`] = `
 "{
     \\"version\\": \\"2018-05-29\\",
     \\"operation\\": \\"Invoke\\",
@@ -10,7 +10,7 @@ exports[`request mapping 1`] = `
   }"
 `;
 
-exports[`response mapping 1`] = `
+exports[`response mapping should match snapshot 1`] = `
 Object {
   "any": "data",
 }

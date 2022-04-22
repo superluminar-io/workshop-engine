@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`request mapping user has admin role should match snapshot 1`] = `
+Object {
+  "payload": Object {},
+  "version": "2018-05-29",
+}
+`;
+
+exports[`response mapping should match snapshot 1`] = `
+Object {
+  "any": "data",
+}
+`;

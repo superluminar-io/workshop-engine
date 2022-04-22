@@ -6,24 +6,28 @@ const me = {
   role: 'ADMIN',
 };
 
-test('request mapping', () => {
-  const parser = new Parser(queryMe.request);
+describe('request mapping', () => {
+  it('should match snapshot', () => {
+    const parser = new Parser(queryMe.request);
 
-  const context = {
-    identity: {
-      resolverContext: me,
-    },
-  };
+    const context = {
+      identity: {
+        resolverContext: me,
+      },
+    };
 
-  expect(parser.resolve(context)).toMatchSnapshot();
+    expect(parser.resolve(context)).toMatchSnapshot();
+  });
 });
 
-test('response mapping', () => {
-  const parser = new Parser(queryMe.response);
+describe('response mapping', () => {
+  it('should match snapshot', () => {
+    const parser = new Parser(queryMe.response);
 
-  const context = {
-    result: me,
-  };
+    const context = {
+      result: me,
+    };
 
-  expect(parser.resolve(context)).toMatchSnapshot();
+    expect(parser.resolve(context)).toMatchSnapshot();
+  });
 });

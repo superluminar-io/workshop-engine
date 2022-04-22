@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`request mapping 1`] = `
+exports[`request mapping should match snapshot 1`] = `
 Object {
   "payload": Object {
     "emailAddress": "me@example.com",
@@ -10,7 +10,7 @@ Object {
 }
 `;
 
-exports[`response mapping 1`] = `
+exports[`response mapping should match snapshot 1`] = `
 Object {
   "emailAddress": "me@example.com",
   "role": "ADMIN",
