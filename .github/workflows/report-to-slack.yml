@@ -1,0 +1,20 @@
+on:
+  status
+
+jobs:
+  if_error_or_failure:
+    runs-on: ubuntu-latest
+    if: >-
+      github.event.state == 'error' ||
+      github.event.state == 'failure'
+    steps:
+      - name: Report to slack
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        uses: slackapi/slack-github-action@v1.18.0
+        with:
+          payload: |
+            {
+              "text": "Workshop Engine Deployment failed! \n Error: ${{ github.event.description }} \n\n See: ${{ github.event.head_commit.url }}",
+            }
