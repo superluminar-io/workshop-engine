@@ -7,6 +7,8 @@ on:
 env:
   CI: "true"
 
+concurrency: cd
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -72,4 +74,3 @@ jobs:
       - name: Set environment URL
         id: set-environment-url
         run: echo "::set-output name=environment_url::$(cat outputs.json | jq -r '."workshop-engine-prod" | to_entries | map(select(.key | startswith("GraphQLApiEndpoint")))[0].value')"
-
