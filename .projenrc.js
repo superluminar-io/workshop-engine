@@ -3,6 +3,9 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   cdkVersion: '2.1.0',
   defaultReleaseBranch: 'main',
   name: 'workshop-engine',
+  autoApproveOptions: {
+    allowedUsernames: ['superluminar-bot'],
+  },
   deps: [
     '@aws-cdk/aws-servicecatalog-alpha',
     '@aws-cdk/aws-appsync-alpha',
