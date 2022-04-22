@@ -52,6 +52,7 @@
     "@aws-cdk/aws-servicecatalog-alpha": "^2.21.0-alpha.0",
     "@aws-sdk/client-sts": "^3.75.0",
     "@clerk/clerk-sdk-node": "^2.10.0",
+    "appsync-template-tester": "^1.1.9",
     "aws-cdk-lib": "^2.1.0",
     "cdk-common": "^2.0.128",
     "constructs": "^10.0.5",
