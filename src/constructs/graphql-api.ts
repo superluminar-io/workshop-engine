@@ -1,6 +1,6 @@
 import { join } from 'path';
 import * as appsync from '@aws-cdk/aws-appsync-alpha';
-import { Aws, aws_iam as iam, aws_lambda_nodejs as lambdaNodejs, aws_secretsmanager as sm, aws_dynamodb as dynamodb } from 'aws-cdk-lib';
+import { Aws, aws_iam as iam, aws_lambda_nodejs as lambdaNodejs, aws_secretsmanager as sm, aws_dynamodb as dynamodb, CfnOutput } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as mappingTemplates from '../mapping-templates';
 
@@ -167,6 +167,10 @@ export class GraphQLApi extends Construct {
     awsSignInUrlDataSource.createResolver({
       typeName: 'Mutation',
       fieldName: 'createAwsSignInUrl',
+    });
+
+    new CfnOutput(this, 'Endpoint', {
+      value: api.graphqlUrl,
     });
   }
 }
