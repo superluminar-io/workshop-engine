@@ -1,13 +1,14 @@
 name: report to slack
-on: 
- - status
+on:
+  workflow_run:
+    workflows: [cd]
+    types:
+      - completed
 
 jobs:
-  if_error_or_failure:
+  report_failure:
     runs-on: ubuntu-latest
-    if: >-
-      github.event.state == 'error' ||
-      github.event.state == 'failure'
+    if: github.event.workflow_run.conclusion == 'failure'
     steps:
       - name: Report to slack
         env:
@@ -17,5 +18,5 @@ jobs:
         with:
           payload: |
             {
-              "text": "Workshop Engine Deployment failed! \n Error: ${{ github.event.description }} \n\n See: ${{ github.event.head_commit.url }}"
+              "text": "Workshop Engine Deployment failed! \n\n See: ${{ github.event.workflow_run.html_url }}"
             }
