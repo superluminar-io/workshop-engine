@@ -1,5 +1,4 @@
-on:
-  status
+on: status
 
 jobs:
   if_error_or_failure:
@@ -16,5 +15,5 @@ jobs:
         with:
           payload: |
             {
-              "text": "Workshop Engine Deployment failed! \n Error: ${{ github.event.description }} \n\n See: ${{ github.event.head_commit.url }}",
+              "text": "Workshop Engine Deployment failed! \n Error: ${{ github.event.description }} \n\n See: ${{ github.event.head_commit.url }}"
             }
