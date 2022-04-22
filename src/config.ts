@@ -5,6 +5,7 @@ export interface ResolverContext {
 }
 
 export enum AwsAccount {
+  'workshop-engine-management' = '298097285261',
   'workshop-engine-staging' = '203864079770',
   'workshop-engine-prod' = '091964112581'
 }
