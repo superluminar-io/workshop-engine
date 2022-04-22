@@ -1,10 +1,10 @@
 import Parser from 'appsync-template-tester';
-import * as functionIsAdmin from './functionIsAdmin';
+import { request, response } from './functionIsAdmin';
 
 describe('request mapping', () => {
   describe('user has admin role', () => {
     it('should match snapshot', () => {
-      const parser = new Parser(functionIsAdmin.request);
+      const parser = new Parser(request);
 
       const context = {
         identity: {
@@ -20,7 +20,7 @@ describe('request mapping', () => {
 
   describe('user has not admin role', () => {
     it('should throw an error', () => {
-      const parser = new Parser(functionIsAdmin.request);
+      const parser = new Parser(request);
 
       const context = {
         identity: {
@@ -37,7 +37,7 @@ describe('request mapping', () => {
 
 describe('response mapping', () => {
   it('should match snapshot', () => {
-    const parser = new Parser(functionIsAdmin.response);
+    const parser = new Parser(response);
 
     const context = {
       result: {

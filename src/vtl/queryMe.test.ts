@@ -1,5 +1,5 @@
 import Parser from 'appsync-template-tester';
-import * as queryMe from './queryMe';
+import { request, response } from './queryMe';
 
 const me = {
   emailAddress: 'me@example.com',
@@ -8,7 +8,7 @@ const me = {
 
 describe('request mapping', () => {
   it('should match snapshot', () => {
-    const parser = new Parser(queryMe.request);
+    const parser = new Parser(request);
 
     const context = {
       identity: {
@@ -22,7 +22,7 @@ describe('request mapping', () => {
 
 describe('response mapping', () => {
   it('should match snapshot', () => {
-    const parser = new Parser(queryMe.response);
+    const parser = new Parser(response);
 
     const context = {
       result: me,

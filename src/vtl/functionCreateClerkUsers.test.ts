@@ -1,9 +1,9 @@
 import Parser from 'appsync-template-tester';
-import * as functionCreateClerkUsers from './functionCreateClerkUsers';
+import { request, response } from './functionCreateClerkUsers';
 
 describe('request mapping', () => {
   it('should match snapshot', () => {
-    const parser = new Parser(functionCreateClerkUsers.request);
+    const parser = new Parser(request);
 
     const context = {
       arguments: {
@@ -21,7 +21,7 @@ describe('request mapping', () => {
 
 describe('response mapping', () => {
   it('should match snapshot', () => {
-    const parser = new Parser(functionCreateClerkUsers.response);
+    const parser = new Parser(response);
 
     const context = {
       prev: {

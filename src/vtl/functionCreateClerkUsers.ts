@@ -3,7 +3,7 @@ export const request = `
     "version": "2018-05-29",
     "operation": "Invoke",
     "payload": {
-      "userEmailAddresses": $util.toJson($ctx.arguments.input.attendees),
+      "userEmailAddresses": $util.toJson($ctx.arguments.input.attendees)
     }
   }
 `;

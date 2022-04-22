@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`request mapping input w/ aws account id should match snapshot 1`] = `
+Object {
+  "attributeValues": Object {
+    "attendees": Object {
+      "L": Array [
+        Object {
+          "S": "me@xample.com",
+        },
+        Object {
+          "S": "you@xample.com",
+        },
+      ],
+    },
+    "awsAccountId": Object {
+      "S": "298097285261",
+    },
+    "createdAt": Object {
+      "S": "2022-04-22T19:38:10.703Z",
+    },
+    "node": Object {
+      "S": "workshop",
+    },
+    "title": Object {
+      "S": "Serverless Beginner Workshop",
+    },
+  },
+  "key": Object {
+    "id": Object {
+      "S": "beb79a10-437e-48df-96e2-9cd87fdc063f",
+    },
+  },
+  "operation": "PutItem",
+  "version": "2017-02-28",
+}
+`;
+
+exports[`request mapping input w/o aws account id should match snapshot 1`] = `
+Object {
+  "attributeValues": Object {
+    "attendees": Object {
+      "L": Array [
+        Object {
+          "S": "me@xample.com",
+        },
+        Object {
+          "S": "you@xample.com",
+        },
+      ],
+    },
+    "awsAccountId": Object {
+      "S": "",
+    },
+    "createdAt": Object {
+      "S": "2022-04-22T19:38:10.703Z",
+    },
+    "node": Object {
+      "S": "workshop",
+    },
+    "title": Object {
+      "S": "Serverless Beginner Workshop",
+    },
+  },
+  "key": Object {
+    "id": Object {
+      "S": "beb79a10-437e-48df-96e2-9cd87fdc063f",
+    },
+  },
+  "operation": "PutItem",
+  "version": "2017-02-28",
+}
+`;
+
+exports[`response mapping should match snapshot 1`] = `
+Object {
+  "any": "data",
+}
+`;
