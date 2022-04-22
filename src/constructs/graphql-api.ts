@@ -2,7 +2,7 @@ import { join } from 'path';
 import * as appsync from '@aws-cdk/aws-appsync-alpha';
 import { Aws, aws_iam as iam, aws_lambda_nodejs as lambdaNodejs, aws_secretsmanager as sm, aws_dynamodb as dynamodb, CfnOutput } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import * as mappingTemplates from '../mapping-templates';
+import * as mappingTemplates from '../vtl';
 
 export interface GraphQLApiProps {
   workshopAttendeeRoleName: string;
