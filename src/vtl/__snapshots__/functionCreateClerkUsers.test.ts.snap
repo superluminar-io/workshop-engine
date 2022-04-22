@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`request mapping 1`] = `
+"{
+    \\"version\\": \\"2018-05-29\\",
+    \\"operation\\": \\"Invoke\\",
+    \\"payload\\": {
+      \\"userEmailAddresses\\": [\\"me@example.com\\"],
+    }
+  }"
+`;
+
+exports[`response mapping 1`] = `
+Object {
+  "any": "data",
+}
+`;
