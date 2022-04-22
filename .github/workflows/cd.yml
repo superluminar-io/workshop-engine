@@ -43,7 +43,7 @@ jobs:
           name: cdk.out
           path: cdk.out
       - name: Deploy staging environment
-        run: npx cdk deploy workshop-engine-staging -o cdk.out -O outputs.json --require-approval never
+        run: npx cdk deploy workshop-engine-staging -a cdk.out -O outputs.json --require-approval never
       - name: Set environment URL
         id: set-environment-url
         run: echo "::set-output name=environment_url::$(cat outputs.json | jq -r '."workshop-engine-staging" | to_entries | map(select(.key | startswith("GraphQLApiEndpoint")))[0].value')"
@@ -68,7 +68,7 @@ jobs:
           name: cdk.out
           path: cdk.out
       - name: Deploy prod environment
-        run: npx cdk deploy workshop-engine-prod -o cdk.out -O outputs.json --require-approval never
+        run: npx cdk deploy workshop-engine-prod -a cdk.out -O outputs.json --require-approval never
       - name: Set environment URL
         id: set-environment-url
         run: echo "::set-output name=environment_url::$(cat outputs.json | jq -r '."workshop-engine-prod" | to_entries | map(select(.key | startswith("GraphQLApiEndpoint")))[0].value')"
