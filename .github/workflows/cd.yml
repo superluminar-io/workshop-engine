@@ -1,7 +1,8 @@
 name: cd
 on:
-  branches: 
-    - main
+  push:
+    branches:    
+      - main
 
 env:
   CI: "true"
