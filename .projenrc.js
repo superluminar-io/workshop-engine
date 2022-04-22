@@ -3,6 +3,8 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   cdkVersion: '2.1.0',
   defaultReleaseBranch: 'main',
   name: 'workshop-engine',
+  license: 'MIT',
+  copyrightOwner: 'superluminar GmbH',
   autoApproveOptions: {
     allowedUsernames: ['superluminar-bot'],
   },

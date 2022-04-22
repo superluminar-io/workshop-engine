@@ -57,7 +57,7 @@
     "constructs": "^10.0.5",
     "node-fetch": "2"
   },
-  "license": "Apache-2.0",
+  "license": "MIT",
   "version": "0.0.0",
   "jest": {
     "testMatch": [
