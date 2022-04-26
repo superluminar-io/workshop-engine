@@ -54,7 +54,7 @@
     "@clerk/clerk-sdk-node": "^2.10.0",
     "appsync-template-tester": "^1.1.9",
     "aws-cdk-lib": "^2.1.0",
-    "cdk-common": "^2.0.131",
+    "cdk-common": "^2.0.132",
     "constructs": "^10.0.5",
     "node-fetch": "2"
   },
