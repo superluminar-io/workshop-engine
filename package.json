@@ -45,16 +45,16 @@
     "projen": "^0.53.6",
     "ts-jest": "^27.1.4",
     "ts-node": "^9",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.4"
   },
   "dependencies": {
-    "@aws-cdk/aws-appsync-alpha": "^2.21.1-alpha.0",
-    "@aws-cdk/aws-servicecatalog-alpha": "^2.21.1-alpha.0",
-    "@aws-sdk/client-sts": "^3.79.0",
+    "@aws-cdk/aws-appsync-alpha": "^2.22.0-alpha.0",
+    "@aws-cdk/aws-servicecatalog-alpha": "^2.22.0-alpha.0",
+    "@aws-sdk/client-sts": "^3.80.0",
     "@clerk/clerk-sdk-node": "^2.10.0",
     "appsync-template-tester": "^1.1.9",
     "aws-cdk-lib": "^2.1.0",
-    "cdk-common": "^2.0.134",
+    "cdk-common": "^2.0.135",
     "constructs": "^10.0.5",
     "node-fetch": "2"
   },
