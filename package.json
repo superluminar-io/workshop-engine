@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.95",
-    "@types/jest": "^27.4.1",
+    "@types/jest": "^27.5.0",
     "@types/node": "^12",
     "@types/node-fetch": "2",
     "@typescript-eslint/eslint-plugin": "^5",
@@ -50,11 +50,11 @@
   "dependencies": {
     "@aws-cdk/aws-appsync-alpha": "^2.22.0-alpha.0",
     "@aws-cdk/aws-servicecatalog-alpha": "^2.22.0-alpha.0",
-    "@aws-sdk/client-sts": "^3.81.0",
+    "@aws-sdk/client-sts": "^3.82.0",
     "@clerk/clerk-sdk-node": "^2.10.0",
     "appsync-template-tester": "^1.1.9",
     "aws-cdk-lib": "^2.1.0",
-    "cdk-common": "^2.0.138",
+    "cdk-common": "^2.0.139",
     "constructs": "^10.0.5",
     "node-fetch": "2"
   },
