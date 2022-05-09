@@ -26,7 +26,7 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.95",
+    "@types/aws-lambda": "^8.10.96",
     "@types/jest": "^27.5.0",
     "@types/node": "^12",
     "@types/node-fetch": "2",
@@ -54,7 +54,7 @@
     "@clerk/clerk-sdk-node": "^2.10.0",
     "appsync-template-tester": "^1.1.9",
     "aws-cdk-lib": "^2.1.0",
-    "cdk-common": "^2.0.144",
+    "cdk-common": "^2.0.145",
     "constructs": "^10.0.5",
     "node-fetch": "2"
   },
