@@ -10,7 +10,7 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@aws-cdk/assert@^2.24.1":
+"@aws-cdk/assert@^2.25.0":
   version "2.25.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/assert/-/assert-2.25.0.tgz#6e8e4f87df8969c7b9d3587156c85128e72bec56"
   integrity sha512-nLSf2FSbdAcseH9nX/C1SiPnToqT6IkkRmoe5bwU4kY6BH09/PSPxbQ5cMdG9xp02Tdh/9GAVo/PsNCwOu1S+g==
@@ -2202,9 +2202,9 @@ camelcase@^6.2.0, camelcase@^6.3.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001332:
-  version "1.0.30001341"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001341.tgz#59590c8ffa8b5939cf4161f00827b8873ad72498"
-  integrity sha512-2SodVrFFtvGENGCv0ChVJIDQ0KPaS1cg7/qtfMaICgeMolDdo/Z2OD32F0Aq9yl6F4YFwGPBS5AaPqNYiW4PoA==
+  version "1.0.30001342"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001342.tgz#87152b1e3b950d1fbf0093e23f00b6c8e8f1da96"
+  integrity sha512-bn6sOCu7L7jcbBbyNhLg0qzXdJ/PMbybZTH/BA6Roet9wxYRm6Tr9D0s0uhLkOZ6MSG+QU6txUgdpr3MXIVqjA==
 
 case@1.6.3, case@^1.6.3:
   version "1.6.3"
@@ -2216,12 +2216,12 @@ caseless@^0.12.0, caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha512-4tYFyifaFfGacoiObjJegolkwSU4xQNGbVgUiNYVUxbQ2x2lUsFvY4hVgVzGiIe6WLOPqycWXA40l+PWsxthUw==
 
-cdk-common@^2.0.152:
-  version "2.0.152"
-  resolved "https://registry.yarnpkg.com/cdk-common/-/cdk-common-2.0.152.tgz#c2baf6a04a67847a5b7bbe2e5e09d6e396ecfcbc"
-  integrity sha512-0HIGdjY6gK4s/OAFIDN9gb4R2PNaq4KQ0OsjFdH2KOSaJTFA+TtmdJD4l3pMSJhq0rC18cIjcpupzlioTsjWeg==
+cdk-common@^2.0.154:
+  version "2.0.154"
+  resolved "https://registry.yarnpkg.com/cdk-common/-/cdk-common-2.0.154.tgz#b104f179c774e865a8af7bf26a038dd9566104cf"
+  integrity sha512-7wHDFPfugJutTt09cXqPgPy0b1iyFaPLCz5cMHtBhc2kYzq6WtvVcVuB4FZVBNqDmYDRBSn9jdk5XI5V3tVlqQ==
   dependencies:
-    "@aws-cdk/assert" "^2.24.1"
+    "@aws-cdk/assert" "^2.25.0"
     case "^1.6.3"
     sync-request "^6.1.0"
 
@@ -2407,9 +2407,9 @@ console-control-strings@^1.1.0:
   integrity sha1-PXz0Rk22RG6mRL9LOVB/mFEAjo4=
 
 constructs@^10.0.5:
-  version "10.1.14"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.1.14.tgz#ffdcb3df479b4fc38ca95ed1c46fe1ee68b63940"
-  integrity sha512-EMyPTSRrUXQLv8Y1k7Y0zHJfjmsywC5wcbhgNQLT3OTXdo8kVbHckHBbmjuIHw05rdf5rKmg92wzpLbHjh5yiQ==
+  version "10.1.15"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.1.15.tgz#b1e9ae3d2e96992ad4060a4581036f9a2f40811e"
+  integrity sha512-fvGJ3AXx4uf0W4PoDnHa7s6IwSGprGYO9lhTG0jlRMzUyW7QtKLUKaTMT0zK621tTiCuZnBk6m26x4AnVYqkNw==
 
 conventional-changelog-config-spec@^2.1.0:
   version "2.1.0"
