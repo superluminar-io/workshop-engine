@@ -1,15 +1,14 @@
 import Parser from 'appsync-template-tester';
-import { request, response } from './functionCreateClerkUsers';
+import { request, response } from './functionAcceptInvitation';
 
 describe('request mapping', () => {
   it('should match snapshot', () => {
     const parser = new Parser(request);
 
     const context = {
-      stash: {
-        clerkUsers: [
-          'me@example.com',
-        ],
+      arguments: {
+        inviteId: 'c87c4461-ad5a-45ce-bc42-87e9b10e1bab',
+        emailAddress: 'me@xample.com',
       },
     };
 
@@ -22,10 +21,8 @@ describe('response mapping', () => {
     const parser = new Parser(response);
 
     const context = {
-      prev: {
-        result: {
-          any: 'data',
-        },
+      result: {
+        any: 'data',
       },
     };
 

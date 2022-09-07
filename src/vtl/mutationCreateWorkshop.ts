@@ -1,4 +1,5 @@
 export const request = `
+  $util.qr($ctx.stash.put("clerkUsers", $ctx.arguments.input.attendees))
   {}
 `;
 

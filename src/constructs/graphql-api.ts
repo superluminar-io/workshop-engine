@@ -114,6 +114,14 @@ export class GraphQLApi extends Construct {
       responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionUpdateWorkshop.response),
     });
 
+    const acceptInvitationFunction = new appsync.AppsyncFunction(this, 'AcceptInvitationFunction', {
+      name: 'updateWorkshopFunction',
+      api,
+      dataSource: workshopTableDataSource,
+      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionAcceptInvitation.request),
+      responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionAcceptInvitation.response),
+    });
+
     const createClerkUsersDataSource = api.addLambdaDataSource(
       'CreateClerkUsersDataSource',
       new lambdaNodejs.NodejsFunction(this, 'CreateClerkUsersFunction', {
@@ -145,6 +153,15 @@ export class GraphQLApi extends Construct {
       pipelineConfig: [isAdminFunction, updateWorkshopFunction, createClerkUsersFunction],
       requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.mutationUpdateWorkshop.request),
       responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.mutationUpdateWorkshop.response),
+    });
+
+    new appsync.Resolver(this, 'AcceptInvitationPipelineResolver', {
+      api,
+      typeName: 'Mutation',
+      fieldName: 'acceptInvitation',
+      pipelineConfig: [acceptInvitationFunction, createClerkUsersFunction],
+      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.mutationAcceptInvitation.request),
+      responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.mutationAcceptInvitation.response),
     });
 
     workshopTableDataSource.createResolver({

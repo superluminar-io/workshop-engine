@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`request mapping should match snapshot 1`] = `
+Object {
+  "key": Object {
+    "id": Object {
+      "S": "c87c4461-ad5a-45ce-bc42-87e9b10e1bab",
+    },
+  },
+  "operation": "UpdateItem",
+  "update": Object {
+    "expression": "SET attendees = list_append(attendees, :attendees)",
+    "expressionValues": Object {
+      ":attendees": Object {
+        "L": Array [
+          Object {
+            "S": "me@xample.com",
+          },
+        ],
+      },
+    },
+  },
+  "version": "2017-02-28",
+}
+`;
+
+exports[`response mapping should match snapshot 1`] = `
+Object {
+  "any": "data",
+}
+`;
