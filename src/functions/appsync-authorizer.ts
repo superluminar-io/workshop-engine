@@ -1,8 +1,16 @@
 import clerk from '@clerk/clerk-sdk-node';
 import { ResolverContext, UserRole } from '../config';
 
+const acceptInvitationQuery = 'mutation AcceptInvitation($inviteId: ID!, $emailAddress: String!) {\n  acceptInvitation(inviteId: $inviteId, emailAddress: $emailAddress) {\n    ok\n    __typename\n  }\n}';
+
 export const handler: AWSLambda.AppSyncAuthorizerHandler<ResolverContext> = async (event) => {
   console.log(`Event: ${JSON.stringify(event)}`);
+
+  if (event.requestContext.queryString === acceptInvitationQuery) {
+    return {
+      isAuthorized: true,
+    };
+  }
 
   try {
     const token = event.authorizationToken.split('Bearer ')[1];

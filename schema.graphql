@@ -27,6 +27,10 @@ type WorkshopList {
   nextToken: String
 }
 
+type AcceptInvitationResponse {
+  ok: Boolean!
+}
+
 type Query {
   me: User!
   workshops(nextToken: String, limit: Int): WorkshopList!
@@ -39,6 +43,10 @@ type Mutation {
     workshopId: ID!
     input: CreateOrUpdateWorkshopInput!
   ): Workshop!
+  acceptInvitation(
+    inviteId: ID!
+    emailAddress: String!
+  ): AcceptInvitationResponse!
   promoteUser(emailAddress: ID!, role: UserRole!): User!
 }
 
