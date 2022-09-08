@@ -19,6 +19,9 @@ Object {
     "createdAt": Object {
       "S": "2022-04-22T19:38:10.703Z",
     },
+    "description": Object {
+      "S": "",
+    },
     "node": Object {
       "S": "workshop",
     },
@@ -54,6 +57,9 @@ Object {
     },
     "createdAt": Object {
       "S": "2022-04-22T19:38:10.703Z",
+    },
+    "description": Object {
+      "S": "",
     },
     "node": Object {
       "S": "workshop",

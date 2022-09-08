@@ -9,7 +9,7 @@ Object {
   },
   "operation": "UpdateItem",
   "update": Object {
-    "expression": "SET title = :title, awsAccountId = :awsAccountId, attendees = :attendees",
+    "expression": "SET title = :title, awsAccountId = :awsAccountId, attendees = :attendees, description = :description",
     "expressionValues": Object {
       ":attendees": Object {
         "L": Array [
@@ -23,6 +23,9 @@ Object {
       },
       ":awsAccountId": Object {
         "S": "298097285261",
+      },
+      ":description": Object {
+        "S": "",
       },
       ":title": Object {
         "S": "Serverless Beginner Workshop",
@@ -42,7 +45,7 @@ Object {
   },
   "operation": "UpdateItem",
   "update": Object {
-    "expression": "SET title = :title, awsAccountId = :awsAccountId, attendees = :attendees",
+    "expression": "SET title = :title, awsAccountId = :awsAccountId, attendees = :attendees, description = :description",
     "expressionValues": Object {
       ":attendees": Object {
         "L": Array [
@@ -55,6 +58,9 @@ Object {
         ],
       },
       ":awsAccountId": Object {
+        "S": "",
+      },
+      ":description": Object {
         "S": "",
       },
       ":title": Object {
