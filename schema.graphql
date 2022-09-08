@@ -10,6 +10,7 @@ type User {
 
 type Workshop {
   id: ID!
+  description: String
   awsAccountId: String
   title: String!
   createdAt: AWSDateTime!
@@ -19,6 +20,7 @@ type Workshop {
 input CreateOrUpdateWorkshopInput {
   awsAccountId: String
   title: String!
+  description: String
   attendees: [String!]!
 }
 

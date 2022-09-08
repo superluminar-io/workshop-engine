@@ -9,6 +9,7 @@ export const request = `
       "node": "workshop",
       "createdAt": "$util.time.nowISO8601()",
       "title": "$ctx.arguments.input.title",
+      "description": "$util.defaultIfNullOrEmpty($ctx.arguments.input.description, '')",
       "awsAccountId": "$util.defaultIfNullOrEmpty($ctx.arguments.input.awsAccountId, '')",
       "attendees": $ctx.arguments.input.attendees
     })

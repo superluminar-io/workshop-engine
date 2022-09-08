@@ -6,9 +6,10 @@ export const request = `
       "id": $util.dynamodb.toDynamoDBJson($ctx.arguments.workshopId)
     },
     "update": {
-      "expression" : "SET title = :title, awsAccountId = :awsAccountId, attendees = :attendees",
+      "expression" : "SET title = :title, awsAccountId = :awsAccountId, attendees = :attendees, description = :description",
       "expressionValues": {
         ":title" : $util.dynamodb.toDynamoDBJson($ctx.arguments.input.title),
+        ":description" : $util.dynamodb.toDynamoDBJson("$util.defaultIfNullOrEmpty($ctx.arguments.input.description, '')"),
         ":awsAccountId" : $util.dynamodb.toDynamoDBJson("$util.defaultIfNullOrEmpty($ctx.arguments.input.awsAccountId, '')"),
         ":attendees" : $util.dynamodb.toDynamoDBJson($ctx.arguments.input.attendees)
       }
