@@ -1,10 +1,12 @@
 export * as functionIsAdmin from './functionIsAdmin';
 export * as functionStoreWorkshop from './functionStoreWorkshop';
 export * as functionUpdateWorkshop from './functionUpdateWorkshop';
+export * as functionDeleteWorkshop from './functionDeleteWorkshop';
 export * as functionCreateClerkUsers from './functionCreateClerkUsers';
 export * as functionAcceptInvitation from './functionAcceptInvitation';
 export * as mutationCreateWorkshop from './mutationCreateWorkshop';
 export * as mutationUpdateWorkshop from './mutationUpdateWorkshop';
+export * as mutationDeleteWorkshop from './mutationDeleteWorkshop';
 export * as mutationAcceptInvitation from './mutationAcceptInvitation';
 export * as queryMe from './queryMe';
 export * as queryWorkshops from './queryWorkshops';

@@ -33,6 +33,10 @@ type AcceptInvitationResponse {
   ok: Boolean!
 }
 
+type DeleteWorkshopResponse {
+  ok: Boolean!
+}
+
 type Query {
   me: User!
   workshops(nextToken: String, limit: Int): WorkshopList!
@@ -45,6 +49,7 @@ type Mutation {
     workshopId: ID!
     input: CreateOrUpdateWorkshopInput!
   ): Workshop!
+  deleteWorkshop(workshopId: ID!): DeleteWorkshopResponse!
   acceptInvitation(
     inviteId: ID!
     emailAddress: String!

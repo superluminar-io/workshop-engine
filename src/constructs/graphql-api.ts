@@ -114,6 +114,14 @@ export class GraphQLApi extends Construct {
       responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionUpdateWorkshop.response),
     });
 
+    const deleteWorkshopFunction = new appsync.AppsyncFunction(this, 'DeleteWorkshopFunction', {
+      name: 'deleteWorkshopFunction',
+      api,
+      dataSource: workshopTableDataSource,
+      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionDeleteWorkshop.request),
+      responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.functionDeleteWorkshop.response),
+    });
+
     const acceptInvitationFunction = new appsync.AppsyncFunction(this, 'AcceptInvitationFunction', {
       name: 'updateWorkshopFunction',
       api,
@@ -153,6 +161,15 @@ export class GraphQLApi extends Construct {
       pipelineConfig: [isAdminFunction, updateWorkshopFunction, createClerkUsersFunction],
       requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.mutationUpdateWorkshop.request),
       responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.mutationUpdateWorkshop.response),
+    });
+
+    new appsync.Resolver(this, 'DeleteWorkshopPipelineResolver', {
+      api,
+      typeName: 'Mutation',
+      fieldName: 'deleteWorkshop',
+      pipelineConfig: [isAdminFunction, deleteWorkshopFunction],
+      requestMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.mutationDeleteWorkshop.request),
+      responseMappingTemplate: appsync.MappingTemplate.fromString(mappingTemplates.mutationDeleteWorkshop.response),
     });
 
     new appsync.Resolver(this, 'AcceptInvitationPipelineResolver', {
