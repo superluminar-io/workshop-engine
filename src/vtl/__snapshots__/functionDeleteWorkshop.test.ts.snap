@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`request mapping should match snapshot 1`] = `
+Object {
+  "key": Object {
+    "id": Object {
+      "S": "beb79a10-437e-48df-96e2-9cd87fdc063f",
+    },
+  },
+  "operation": "DeleteItem",
+  "version": "2018-05-29",
+}
+`;
+
+exports[`response mapping should match snapshot 1`] = `
+Object {
+  "any": "data",
+}
+`;
